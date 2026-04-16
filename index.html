@@ -61,6 +61,24 @@ body{
 .aurora{position:fixed;pointer-events:none;z-index:0;width:200%;height:2px;left:-50%;background:linear-gradient(90deg,transparent,rgba(0,229,204,.15),rgba(0,149,255,.2),rgba(0,229,204,.1),transparent);animation:aurora var(--ad,20s) ease-in-out infinite var(--adl,0s);opacity:.4;}
 @keyframes aurora{0%,100%{transform:translateY(0) scaleX(1);}50%{transform:translateY(-25px) scaleX(1.1);}}
 
+/* ===== TITI MONKEYS BACKGROUND ===== */
+#titi-bg{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.titi-bg-img{
+  position:absolute;
+  opacity:0.045;
+  filter:saturate(0) brightness(2);
+  animation:titi-float var(--tf,20s) ease-in-out infinite var(--tfd,0s);
+  pointer-events:none;
+  user-select:none;
+}
+@keyframes titi-float{
+  0%,100%{transform:translate(0,0) rotate(var(--tr,0deg)) scale(var(--ts,1));}
+  33%{transform:translate(var(--tx1,8px),var(--ty1,-12px)) rotate(calc(var(--tr,0deg) + 3deg)) scale(var(--ts,1));}
+  66%{transform:translate(var(--tx2,-10px),var(--ty2,8px)) rotate(calc(var(--tr,0deg) - 2deg)) scale(var(--ts,1));}
+}
+
 /* MAIN */
 #main{opacity:0;transition:opacity 1.2s ease;}
 #main.visible{opacity:1;}
@@ -160,6 +178,32 @@ body{
   animation:gspark 3s ease-in-out infinite;
 }
 @keyframes gspark{0%,100%{opacity:.3;transform:scale(1);}50%{opacity:.7;transform:scale(1.2);}}
+
+/* TITI STICKER - inline image sticker */
+.titi-sticker{
+  display:inline-block;
+  vertical-align:middle;
+  width:var(--ts-w, 36px);
+  height:var(--ts-h, 36px);
+  object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  margin:0 4px;
+  animation:titi-bounce var(--tb,3s) ease-in-out infinite var(--tbd,0s);
+}
+@keyframes titi-bounce{
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-5px) rotate(3deg);}
+}
+.titi-sticker-lg{
+  display:inline-block;
+  vertical-align:middle;
+  width:var(--ts-w, 52px);
+  height:var(--ts-h, 52px);
+  object-fit:contain;
+  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  margin:0 6px;
+  animation:titi-bounce var(--tb,2.5s) ease-in-out infinite var(--tbd,0s);
+}
 
 /* LETTER original (used for final card) */
 .letter{padding:50px 52px;}
@@ -266,7 +310,7 @@ body{
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
 
-/* IMAGE PLACEHOLDER (shown when img fails to load) */
+/* IMAGE PLACEHOLDER */
 img{display:block;}
 img.errored{
   background:linear-gradient(135deg,rgba(0,40,90,.8),rgba(0,20,60,.9)) !important;
@@ -278,15 +322,15 @@ img.errored{
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- MUSIC: YouTube IFrame embebido correctamente -->
-<iframe id="yt-iframe"
-  src="about:blank"
-  style="position:fixed;bottom:-500px;right:-500px;width:1px;height:1px;pointer-events:none;z-index:-1;opacity:0;"
-  allow="autoplay"
-  frameborder="0">
-</iframe>
-<div id="music-label">Midna's Lament 🎵</div>
+<!-- MUSIC: audio element con YouTube via nocookie embed correcto -->
+<div id="yt-container" style="position:fixed;bottom:-9999px;right:-9999px;width:1px;height:1px;pointer-events:none;z-index:-1;opacity:0;overflow:hidden;">
+  <div id="yt-player"></div>
+</div>
+<div id="music-label">Música 🎵</div>
 <button id="music-btn" title="Música" onclick="toggleMusic()">🎵</button>
+
+<!-- TITI MONKEYS BG -->
+<div id="titi-bg"></div>
 
 <!-- INTRO -->
 <div id="intro">
@@ -371,24 +415,24 @@ img.errored{
     <div class="glass carta-personal reveal" style="margin-bottom:40px;">
       <div class="gc tl"></div><div class="gc br"></div>
       <div class="carta-deco">✨</div>
-      <div class="carta-hi">Hola mi amor!! 💛</div>
+      <div class="carta-hi">Hola mi amor!! 💛 <img src="imagenes/Captura de pantalla 2026-04-15 164845.png" class="titi-sticker" style="--ts-w:38px;--ts-h:38px;--tb:2.5s;--tbd:0s;" alt="titi"></div>
       <p class="carta-text">
-        Se que no te doy cartitas siempre, pero queria demostrarte lo mucho que te amo y no se me ocurrio otra forma que hacerlo a travez de lo que me gusta hacer 🩵
+        Se que no te doy cartitas siempre, pero queria demostrarte lo mucho que te amo y no se me ocurrio otra forma que hacerlo a travez de lo que me gusta hacer 🩵 <img src="imagenes/Captura de pantalla 2026-04-15 164857.png" class="titi-sticker" style="--ts-w:32px;--ts-h:32px;--tb:3s;--tbd:.3s;" alt="titi">
       </p>
       <div class="carta-pull">
-        Quiero que sepas que para mi eres excepcional, eres la mejor y siempre seras mi <strong>super reina titi preciosa</strong>.
+        Quiero que sepas que para mi eres excepcional, eres la mejor y siempre seras mi <strong>super reina titi preciosa</strong>. <img src="imagenes/Captura de pantalla 2026-04-15 164909.png" class="titi-sticker" style="--ts-w:36px;--ts-h:36px;--tb:2.8s;--tbd:.1s;" alt="titi">
       </div>
       <p class="carta-text">
         Me alegra mucho poder seguir aqui a tu lado y la verdad no quiero que esto pare nunca, quiero seguir <em>robandote el calor</em> y abrazarte junto a los bebes en la camita 🥹
       </p>
       <p class="carta-text">
-        Me encanta comer contigo, comer cositas ricas se siente mejor a tu lado 🍤✨
+        Me encanta comer contigo, comer cositas ricas se siente mejor a tu lado 🍤✨ <img src="imagenes/Captura de pantalla 2026-04-15 164931.png" class="titi-sticker" style="--ts-w:34px;--ts-h:34px;--tb:3.2s;--tbd:.5s;" alt="titi">
       </p>
       <div class="carta-pull">
         Aunque no puedo darte todo, puedo darte mi <strong>corazoncito de pollo</strong> que no es mucho, pero es todo lo que tengo mi amor.
       </div>
       <p class="carta-text">
-        Te amo y siempre te amare, <em>hasta la ultima vez que respire te seguire amando.</em> 💙
+        Te amo y siempre te amare, <em>hasta la ultima vez que respire te seguire amando.</em> 💙 <img src="imagenes/Captura de pantalla 2026-04-15 164845.png" class="titi-sticker" style="--ts-w:30px;--ts-h:30px;--tb:2.2s;--tbd:.2s;" alt="titi">
       </p>
       <p class="carta-text" style="font-size:clamp(15px,2.2vw,19px);color:rgba(232,201,122,0.55);margin-top:8px;">
         (y que sepas que esto no es un mensaje al azar creado por ia xd — realmente puse mi esfuerso en crear esto a la antiguita y solo use ia para aprender a hacer cosas que no sabia :p)
@@ -402,7 +446,7 @@ img.errored{
     <!-- GATITOS -->
     <div class="sep reveal"><div class="sep-l"></div><div class="sep-s"></div><div class="sep-g"></div><div class="sep-s"></div><div class="sep-l"></div></div>
     <div class="sec-h reveal">
-      <h2>Sus gatitos</h2>
+      <h2>Sus gatitos <img src="imagenes/Captura de pantalla 2026-04-15 164857.png" class="titi-sticker" style="--ts-w:28px;--ts-h:28px;--tb:3s;--tbd:.4s;" alt="titi"></h2>
       <p>la familia felina que tanto ama</p>
     </div>
     <div class="heart-row reveal"><span style="--hp:2s;--hpl:0s;">🐾</span><span style="--hp:1.8s;--hpl:.2s;">💙</span><span style="--hp:2.1s;--hpl:.4s;">🐾</span><span style="--hp:1.9s;--hpl:.1s;">💙</span><span style="--hp:2s;--hpl:.3s;">🐾</span></div>
@@ -470,19 +514,27 @@ img.errored{
       <div class="letter-hi">En fin...</div>
       <p style="font-size:clamp(16px,2.2vw,18px);line-height:2.05;color:rgba(200,230,255,.88);font-weight:300;margin-bottom:20px;">
         <strong>Felices 19 añitos wawa</strong>, espero que te guste tu regalo.. 🥹
+        <img src="imagenes/Captura de pantalla 2026-04-15 164909.png" class="titi-sticker-lg" style="--ts-w:48px;--ts-h:48px;--tb:2.5s;--tbd:0s;" alt="titi">
+        <img src="imagenes/Captura de pantalla 2026-04-15 164931.png" class="titi-sticker-lg" style="--ts-w:48px;--ts-h:48px;--tb:3s;--tbd:.4s;" alt="titi">
       </p>
       <div class="heart-row" style="margin-top:20px;">
         <span style="--hp:2s;--hpl:0s;">💙</span><span style="--hp:1.7s;--hpl:.2s;">🩵</span><span style="--hp:2.3s;--hpl:.5s;">💙</span><span style="--hp:1.9s;--hpl:.3s;">🩵</span><span style="--hp:2.1s;--hpl:.1s;">💙</span><span style="--hp:1.8s;--hpl:.4s;">🩵</span><span style="--hp:2s;--hpl:.6s;">💙</span>
       </div>
     </div>
 
-    <div class="footer">hecho con amor <span class="fg"></span> solo para ti, Kito <span class="fg"></span> 16 · 04 · 2026</div>
+    <div class="footer">
+      hecho con amor <span class="fg"></span> solo para ti, Kito <span class="fg"></span> 16 · 04 · 2026
+      <br><br>
+      <img src="imagenes/Captura de pantalla 2026-04-15 164845.png" class="titi-sticker" style="--ts-w:30px;--ts-h:30px;--tb:2.8s;--tbd:0s;" alt="titi">
+      <img src="imagenes/Captura de pantalla 2026-04-15 164857.png" class="titi-sticker" style="--ts-w:30px;--ts-h:30px;--tb:3.2s;--tbd:.3s;" alt="titi">
+      <img src="imagenes/Captura de pantalla 2026-04-15 164909.png" class="titi-sticker" style="--ts-w:30px;--ts-h:30px;--tb:2.5s;--tbd:.6s;" alt="titi">
+      <img src="imagenes/Captura de pantalla 2026-04-15 164931.png" class="titi-sticker" style="--ts-w:30px;--ts-h:30px;--tb:3s;--tbd:.9s;" alt="titi">
+    </div>
   </div>
 </div>
 
 <script>
 // ===== IMAGES =====
-// Rutas relativas a la carpeta imagenes/ — igual que el original
 const IMGS = {
   kito:   'imagenes/Captura de pantalla 2026-04-15 165333.png',
   nero:   'imagenes/WhatsApp Image 2026-04-15 at 5.27.52 PM.jpeg',
@@ -498,7 +550,6 @@ function setImg(id, src) {
   if (!el) return;
   el.src = src;
   el.onerror = function() {
-    // Si no carga, mostrar un placeholder bonito con SVG inline
     this.onerror = null;
     const names = {
       'img-kito': 'Kito', 'img-nero': 'Nero 🐾', 'img-kofun': 'Kofun 🐾',
@@ -562,109 +613,175 @@ for (let i = 0; i < 24; i++) {
   hc.appendChild(h);
 }
 
-// ===== MUSIC - YouTube IFrame API correcto =====
+// ===== TITI BACKGROUND MONKEYS =====
+(function buildTitiBg() {
+  const titiImgs = [
+    'imagenes/Captura de pantalla 2026-04-15 164845.png',
+    'imagenes/Captura de pantalla 2026-04-15 164857.png',
+    'imagenes/Captura de pantalla 2026-04-15 164909.png',
+    'imagenes/Captura de pantalla 2026-04-15 164931.png',
+  ];
+  const bg = document.getElementById('titi-bg');
+  // Place ~16 large background titi images scattered around
+  const placements = [
+    {top:2,left:1,w:220,rot:-15,tf:22,tfd:-3},
+    {top:8,left:72,w:180,rot:10,tf:19,tfd:-8},
+    {top:18,left:40,w:260,rot:-5,tf:25,tfd:-1},
+    {top:30,left:85,w:190,rot:18,tf:21,tfd:-6},
+    {top:42,left:5,w:240,rot:-12,tf:18,tfd:-11},
+    {top:55,left:55,w:210,rot:7,tf:23,tfd:-4},
+    {top:62,left:20,w:170,rot:-20,tf:20,tfd:-9},
+    {top:70,left:78,w:230,rot:14,tf:26,tfd:-2},
+    {top:80,left:38,w:195,rot:-8,tf:17,tfd:-7},
+    {top:88,left:10,w:215,rot:22,tf:24,tfd:-5},
+    {top:92,left:62,w:185,rot:-3,tf:19,tfd:-13},
+    {top:5,left:25,w:200,rot:16,tf:22,tfd:-10},
+    {top:48,left:48,w:250,rot:-18,tf:20,tfd:-1},
+    {top:75,left:88,w:175,rot:9,tf:23,tfd:-8},
+    {top:35,left:68,w:220,rot:-10,tf:18,tfd:-5},
+    {top:15,left:15,w:190,rot:5,tf:21,tfd:-12},
+  ];
+
+  placements.forEach((p, i) => {
+    const img = document.createElement('img');
+    img.className = 'titi-bg-img';
+    img.src = titiImgs[i % titiImgs.length];
+    img.alt = '';
+    const tx1 = (Math.random() - 0.5) * 30;
+    const ty1 = (Math.random() - 0.5) * 20;
+    const tx2 = (Math.random() - 0.5) * 25;
+    const ty2 = (Math.random() - 0.5) * 18;
+    img.style.cssText = `
+      top:${p.top}%;
+      left:${p.left}%;
+      width:${p.w}px;
+      height:auto;
+      --tr:${p.rot}deg;
+      --ts:1;
+      --tf:${p.tf}s;
+      --tfd:-${p.tfd}s;
+      --tx1:${tx1}px;
+      --ty1:${ty1}px;
+      --tx2:${tx2}px;
+      --ty2:${ty2}px;
+    `;
+    bg.appendChild(img);
+  });
+})();
+
+// ===== MUSIC - YouTube IFrame API =====
+// Video: https://www.youtube.com/watch?v=GiFVPK3Wjqw
 let ytPlayer = null;
 let musicPlaying = false;
 let ytReady = false;
 let autoplayPending = false;
+let userInteracted = false;
 
-// Cargar YouTube IFrame API
+// Load YouTube IFrame API
 const ytScript = document.createElement('script');
 ytScript.src = 'https://www.youtube.com/iframe_api';
 document.head.appendChild(ytScript);
 
 window.onYouTubeIframeAPIReady = function() {
   ytReady = true;
-  ytPlayer = new YT.Player('yt-iframe', {
+  ytPlayer = new YT.Player('yt-player', {
     height: '1',
     width: '1',
-    videoId: 'P_kyCU0gwfA',
+    videoId: 'GiFVPK3Wjqw',
     playerVars: {
       autoplay: 0,
       loop: 1,
-      playlist: 'P_kyCU0gwfA',
+      playlist: 'GiFVPK3Wjqw',
       controls: 0,
       disablekb: 1,
       fs: 0,
       modestbranding: 1,
       rel: 0,
-      mute: 0
+      mute: 0,
+      origin: window.location.origin || 'null'
     },
     events: {
       onReady: function(e) {
         e.target.setVolume(35);
-        if (autoplayPending) {
-          e.target.playVideo();
-          musicPlaying = true;
-          document.getElementById('music-btn').textContent = '🔇';
+        if (autoplayPending && userInteracted) {
+          tryPlay();
         }
       },
       onStateChange: function(e) {
+        // Loop manually if ended
         if (e.data === YT.PlayerState.ENDED) {
           ytPlayer.seekTo(0);
           ytPlayer.playVideo();
         }
+      },
+      onError: function(e) {
+        console.warn('YT error:', e.data);
       }
     }
   });
 };
 
-function startMusic() {
-  if (ytReady && ytPlayer && ytPlayer.playVideo) {
-    try {
-      ytPlayer.setVolume(35);
-      ytPlayer.playVideo();
-      musicPlaying = true;
-      document.getElementById('music-btn').textContent = '🔇';
-    } catch(e) {
-      autoplayPending = true;
-    }
-  } else {
+function tryPlay() {
+  if (!ytReady || !ytPlayer || typeof ytPlayer.playVideo !== 'function') {
+    autoplayPending = true;
+    return;
+  }
+  try {
+    ytPlayer.setVolume(35);
+    ytPlayer.playVideo();
+    musicPlaying = true;
+    document.getElementById('music-btn').textContent = '🔇';
+    updateLabel('🎵 música');
+  } catch(e) {
     autoplayPending = true;
   }
 }
 
-function toggleMusic() {
-  const btn = document.getElementById('music-btn');
+function updateLabel(txt) {
   const lbl = document.getElementById('music-label');
-  if (!ytReady || !ytPlayer) {
-    lbl.textContent = 'cargando música...';
-    lbl.style.opacity = '1';
+  lbl.textContent = txt;
+  lbl.style.opacity = '1';
+  setTimeout(() => lbl.style.opacity = '0', 2500);
+}
+
+function toggleMusic() {
+  userInteracted = true;
+  if (!ytReady || !ytPlayer || typeof ytPlayer.playVideo !== 'function') {
     autoplayPending = true;
-    setTimeout(() => lbl.style.opacity = '0', 2000);
+    updateLabel('cargando...');
     return;
   }
   if (musicPlaying) {
     ytPlayer.pauseVideo();
     musicPlaying = false;
-    btn.textContent = '🎵';
-    lbl.textContent = 'pausado';
+    document.getElementById('music-btn').textContent = '🎵';
+    updateLabel('pausado');
   } else {
-    ytPlayer.setVolume(35);
-    ytPlayer.playVideo();
-    musicPlaying = true;
-    btn.textContent = '🔇';
-    lbl.textContent = "Midna's Lament 🎵";
+    tryPlay();
   }
-  lbl.style.opacity = '1';
-  setTimeout(() => lbl.style.opacity = '0', 2000);
 }
 
 // ===== INTRO =====
 let introTimer = setTimeout(() => skipIntro(), 5500);
 function skipIntro() {
   clearTimeout(introTimer);
+  userInteracted = true;
   const intro = document.getElementById('intro');
   intro.classList.add('fadeout');
   setTimeout(() => {
     intro.style.display = 'none';
     document.getElementById('main').classList.add('visible');
-    // Intentar música después de interacción del usuario
-    setTimeout(startMusic, 800);
+    // Start music after user interaction (intro click counts)
+    autoplayPending = true;
+    setTimeout(() => {
+      if (ytReady && ytPlayer) {
+        tryPlay();
+      }
+      // If player not ready yet, autoplayPending=true will trigger it onReady
+    }, 800);
   }, 1400);
 }
 document.getElementById('iskip').addEventListener('click', skipIntro);
-// También skipear con cualquier toque/click en el intro
 document.getElementById('intro').addEventListener('click', skipIntro);
 
 // ===== SCROLL REVEAL =====
