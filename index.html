@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Para Kito 💙</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --teal:#00e5cc;
   --blue:#0095ff;
+  --gold:#e8c97a;
+  --gold-light:#f5e09a;
+  --gold-dim:rgba(232,201,122,0.7);
   --glow-teal:rgba(0,229,204,0.4);
 }
 html{scroll-behavior:smooth;}
@@ -50,22 +53,6 @@ body{
 .star2{position:absolute;border-radius:50%;background:#fff;animation:twink var(--d,3s) ease-in-out infinite var(--dl,0s);}
 @keyframes twink{0%,100%{opacity:.1;}50%{opacity:var(--op,.8);}}
 
-/* FLOATING STICKERS (monos decorativos) */
-.sticker-float{
-  position:fixed;pointer-events:none;z-index:1;
-  opacity:0;
-  animation:sticker-drift var(--sd,20s) ease-in-out infinite var(--sdl,0s);
-  filter:drop-shadow(0 0 8px rgba(0,229,204,.2));
-}
-@keyframes sticker-drift{
-  0%{opacity:0;transform:translateY(0) rotate(var(--sr,0deg)) scale(.7);}
-  15%{opacity:var(--sop,.18);}
-  50%{transform:translateY(-15px) rotate(calc(var(--sr,0deg) + 5deg)) scale(.75);}
-  85%{opacity:var(--sop,.18);}
-  100%{opacity:0;transform:translateY(0) rotate(var(--sr,0deg)) scale(.7);}
-}
-.sticker-float img{width:var(--siz,120px);height:var(--siz,120px);object-fit:contain;border-radius:12px;}
-
 /* HEARTS FLOATING */
 .fheart{position:fixed;bottom:-60px;pointer-events:none;z-index:1;font-size:var(--fs,16px);color:rgba(100,180,255,var(--hop,.3));animation:fheart var(--hd,12s) ease-in-out infinite var(--hdl,0s);opacity:0;}
 @keyframes fheart{0%{opacity:0;transform:translateY(0) rotate(0deg);}10%{opacity:.7;}90%{opacity:.2;}100%{opacity:0;transform:translateY(-105vh) rotate(360deg);}}
@@ -98,14 +85,89 @@ body{
 .gc.tl{top:0;left:0;border-top:1px solid rgba(0,229,204,.4);border-left:1px solid rgba(0,229,204,.4);border-radius:18px 0 0 0;}
 .gc.br{bottom:0;right:0;border-bottom:1px solid rgba(0,229,204,.4);border-right:1px solid rgba(0,229,204,.4);border-radius:0 0 18px 0;}
 
-/* LETTER */
+/* ===== CARTA PERSONAL - ESTILO ESPECIAL ===== */
+.carta-personal{padding:52px 56px;position:relative;}
+@media(max-width:600px){.carta-personal{padding:36px 28px;}}
+.carta-personal::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(232,201,122,0.04),rgba(232,201,122,0.08),rgba(0,229,204,0.03));
+  pointer-events:none;border-radius:18px;
+}
+.carta-hi{
+  font-family:'Caveat',cursive;
+  font-size:clamp(20px,3.5vw,27px);
+  color:var(--gold);
+  margin-bottom:26px;
+  font-weight:600;
+  text-shadow:0 0 20px rgba(232,201,122,0.5),0 0 40px rgba(232,201,122,0.2);
+  letter-spacing:1px;
+}
+.carta-text{
+  font-family:'Caveat',cursive;
+  font-size:clamp(18px,2.8vw,23px);
+  line-height:2;
+  color:var(--gold-light);
+  font-weight:400;
+  margin-bottom:18px;
+  text-shadow:0 0 15px rgba(232,201,122,0.25);
+  letter-spacing:0.3px;
+}
+.carta-text em{
+  color:#fff;
+  font-style:italic;
+  text-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+.carta-text strong{
+  color:var(--gold);
+  font-weight:700;
+  text-shadow:0 0 20px rgba(232,201,122,0.6);
+}
+.carta-pull{
+  border-left:3px solid rgba(232,201,122,0.5);
+  padding:16px 22px;
+  margin:24px 0;
+  background:linear-gradient(90deg,rgba(232,201,122,0.08),transparent);
+  border-radius:0 10px 10px 0;
+  font-family:'Caveat',cursive;
+  font-size:clamp(19px,3vw,25px);
+  color:var(--gold-light);
+  font-style:italic;
+  text-shadow:0 0 20px rgba(232,201,122,0.3);
+  line-height:1.9;
+}
+.carta-sign{
+  font-family:'Caveat',cursive;
+  text-align:right;
+  font-size:clamp(20px,3vw,26px);
+  color:var(--gold);
+  margin-top:30px;
+  font-weight:700;
+  text-shadow:0 0 25px rgba(232,201,122,0.5);
+}
+.carta-sign small{
+  display:block;
+  font-family:'Josefin Sans',sans-serif;
+  font-size:11px;
+  letter-spacing:4px;
+  color:rgba(232,201,122,.3);
+  margin-top:6px;
+  font-weight:300;
+}
+/* Gold sparkles decoration */
+.carta-personal .carta-deco{
+  position:absolute;top:20px;right:24px;
+  font-size:18px;opacity:.4;
+  animation:gspark 3s ease-in-out infinite;
+}
+@keyframes gspark{0%,100%{opacity:.3;transform:scale(1);}50%{opacity:.7;transform:scale(1.2);}}
+
+/* LETTER original (used for final card) */
 .letter{padding:50px 52px;}
 @media(max-width:600px){.letter{padding:30px 24px;}}
 .letter-hi{font-family:'Cinzel Decorative',serif;font-size:clamp(16px,3vw,21px);color:rgba(0,229,204,.75);margin-bottom:30px;font-weight:400;}
 .letter p{font-size:clamp(16px,2.2vw,18px);line-height:2.05;color:rgba(200,230,255,.88);font-weight:300;margin-bottom:20px;}
 .letter p strong{color:#a0e0ff;font-weight:600;}
 .letter p em{color:rgba(0,229,204,.9);font-style:italic;}
-.pull{border-left:2px solid rgba(0,229,204,.35);padding:14px 20px;margin:22px 0;background:linear-gradient(90deg,rgba(0,229,204,.06),transparent);border-radius:0 8px 8px 0;font-style:italic;font-size:clamp(17px,2.5vw,20px);color:rgba(180,230,255,.9);}
 .letter-sign{font-family:'Cinzel Decorative',serif;text-align:right;font-size:clamp(15px,2.5vw,19px);color:rgba(0,229,204,.65);margin-top:34px;}
 .letter-sign small{display:block;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:4px;color:rgba(0,229,204,.3);margin-top:6px;}
 
@@ -126,7 +188,7 @@ body{
 .kito-wrap{display:flex;flex-direction:column;align-items:center;margin:50px 0;gap:18px;}
 .kito-frame{position:relative;width:210px;height:210px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--teal),var(--blue),rgba(0,229,204,.3));box-shadow:0 0 30px var(--glow-teal),0 0 60px rgba(0,229,204,.2);animation:fpulse 3s ease-in-out infinite;}
 @keyframes fpulse{0%,100%{box-shadow:0 0 30px var(--glow-teal),0 0 60px rgba(0,229,204,.2);}50%{box-shadow:0 0 50px var(--glow-teal),0 0 90px rgba(0,229,204,.35);}}
-.kito-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #000a14;}
+.kito-frame img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:3px solid #000a14;background:linear-gradient(135deg,rgba(0,60,120,.8),rgba(0,30,80,.9));}
 .kito-cap{font-family:'Cinzel Decorative',serif;font-size:clamp(13px,2.5vw,15px);color:rgba(0,229,204,.65);letter-spacing:4px;text-align:center;}
 .kito-cap small{display:block;font-family:'Josefin Sans',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(160,200,255,.35);margin-top:4px;}
 
@@ -134,7 +196,7 @@ body{
 .cats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px;}
 @media(max-width:600px){.cats-grid{grid-template-columns:1fr;gap:16px;}}
 .cat-card{padding:26px 18px;text-align:center;}
-.cat-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,229,204,.25);margin:0 auto 14px;display:block;box-shadow:0 0 20px rgba(0,229,204,.15);transition:box-shadow .3s;}
+.cat-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,229,204,.25);margin:0 auto 14px;display:block;box-shadow:0 0 20px rgba(0,229,204,.15);transition:box-shadow .3s;background:linear-gradient(135deg,rgba(0,60,120,.6),rgba(0,30,80,.8));}
 .cat-card:hover .cat-photo{box-shadow:0 0 35px rgba(0,229,204,.35);}
 .cat-name{font-family:'Cinzel Decorative',serif;font-size:16px;color:rgba(0,229,204,.8);margin-bottom:8px;}
 .cat-desc{font-size:13px;color:rgba(170,210,255,.6);line-height:1.7;font-weight:300;}
@@ -145,7 +207,7 @@ body{
 @media(max-width:580px){.chars-grid{grid-template-columns:1fr;}}
 .char-card{padding:26px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;transition:transform .3s;}
 .char-card:hover{transform:translateY(-6px);}
-.char-img{width:100%;max-width:150px;border-radius:10px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,229,204,.2));transition:filter .3s;}
+.char-img{width:100%;max-width:150px;height:150px;border-radius:10px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(0,229,204,.2));transition:filter .3s;background:linear-gradient(135deg,rgba(0,40,90,.8),rgba(0,20,60,.9));}
 .char-card:hover .char-img{filter:drop-shadow(0 0 22px rgba(0,229,204,.5));}
 .char-name{font-family:'Cinzel Decorative',serif;font-size:12px;color:rgba(0,229,204,.7);letter-spacing:2px;}
 .char-desc{font-size:12px;color:rgba(160,200,255,.5);line-height:1.6;font-weight:300;}
@@ -203,14 +265,26 @@ body{
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease;}
 .reveal.in{opacity:1;transform:translateY(0);}
+
+/* IMAGE PLACEHOLDER (shown when img fails to load) */
+img{display:block;}
+img.errored{
+  background:linear-gradient(135deg,rgba(0,40,90,.8),rgba(0,20,60,.9)) !important;
+  position:relative;
+}
 </style>
 </head>
 <body>
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- HIDDEN YOUTUBE IFRAME (autoplay trick) -->
-<div id="yt-player" style="position:fixed;bottom:-200px;right:-200px;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;z-index:-1;"></div>
+<!-- MUSIC: YouTube IFrame embebido correctamente -->
+<iframe id="yt-iframe"
+  src="about:blank"
+  style="position:fixed;bottom:-500px;right:-500px;width:1px;height:1px;pointer-events:none;z-index:-1;opacity:0;"
+  allow="autoplay"
+  frameborder="0">
+</iframe>
 <div id="music-label">Midna's Lament 🎵</div>
 <button id="music-btn" title="Música" onclick="toggleMusic()">🎵</button>
 
@@ -237,14 +311,6 @@ body{
   <div class="i-bday">✦ &nbsp; 19 años hoy &nbsp; ✦</div>
   <div class="i-skip" id="iskip">Toca para entrar</div>
 </div>
-
-<!-- FLOATING STICKERS (monos decorativos de fondo) -->
-<div class="sticker-float" id="sf1" style="left:2%;top:15%;--sd:22s;--sdl:0s;--sop:.15;--sr:-8deg;--siz:110px;"><img id="sf1img" src="" alt=""></div>
-<div class="sticker-float" id="sf2" style="right:3%;top:10%;--sd:18s;--sdl:-6s;--sop:.12;--sr:10deg;--siz:90px;"><img id="sf2img" src="" alt=""></div>
-<div class="sticker-float" id="sf3" style="left:5%;top:50%;--sd:25s;--sdl:-10s;--sop:.13;--sr:-5deg;--siz:100px;"><img id="sf3img" src="" alt=""></div>
-<div class="sticker-float" id="sf4" style="right:2%;top:55%;--sd:20s;--sdl:-3s;--sop:.11;--sr:12deg;--siz:95px;"><img id="sf4img" src="" alt=""></div>
-<div class="sticker-float" id="sf5" style="left:1%;top:80%;--sd:28s;--sdl:-14s;--sop:.1;--sr:-15deg;--siz:80px;"><img id="sf5img" src="" alt=""></div>
-<div class="sticker-float" id="sf6" style="right:4%;top:78%;--sd:16s;--sdl:-8s;--sop:.14;--sr:6deg;--siz:105px;"><img id="sf6img" src="" alt=""></div>
 
 <div id="floating-hearts"></div>
 
@@ -278,7 +344,7 @@ body{
     <!-- KITO FOTO -->
     <div class="kito-wrap reveal">
       <div class="kito-frame">
-        <img id="img-kito" src="" alt="Kito de pequeña">
+        <img id="img-kito" src="" alt="Kito">
       </div>
       <div class="heart-row"><span style="--hp:2s;--hpl:0s;">💙</span><span style="--hp:1.7s;--hpl:.2s;">🩵</span><span style="--hp:2.2s;--hpl:.4s;">💙</span></div>
       <div class="kito-cap">Kito 🥹<small>desde siempre la más tierna ✦</small></div>
@@ -301,20 +367,36 @@ body{
       </div>
     </div>
 
-    <!-- CARTA -->
-    <div class="glass letter reveal" style="margin-bottom:40px;">
+    <!-- CARTA PERSONAL DE DELI (texto real, dorado) -->
+    <div class="glass carta-personal reveal" style="margin-bottom:40px;">
       <div class="gc tl"></div><div class="gc br"></div>
-      <div class="letter-hi">Mi querida Kito,</div>
-      <p>Hoy quiero detenerte un momento entre todos tus mundos — entre los Sims que construyes con tanta dedicación, entre los trazos que das cuando dibujas y el mundo nace de tus manos, entre Giorno y Postal Dude y los monitos que tanto amas — para decirte algo que necesitas escuchar:</p>
-      <div class="pull">Te amo, Kito. Profundamente, completamente, sin condición. 💙</div>
-      <p>Cada vez que te veo dibujar me doy cuenta de que tienes un regalo especial: convertir lo que sientes en algo visible. Tu pasión por el arte es una parte hermosa de quién eres, y yo me siento muy afortunado de verlo.</p>
-      <p>Me encanta cómo cuidas a <strong>Nero</strong>, a <strong>Kofun</strong> y a tus gatitas — porque en cómo los tratas veo la ternura que llevas adentro. Esa misma ternura que hace que seas <em>mi titi</em>.</p>
-      <p>Eres graciosa, creativa y apasionada. Cuando cocinas pones amor en cada plato — ese risotto de camarones podría hacer llorar de felicidad — y cuando juegas Los Sims construyes mundos enteros con una paciencia que admiro.</p>
-      <div class="pull">En este día tan tuyo, quiero que sepas que Deli te ama con toda su alma. Hoy, mañana y siempre. 💙</div>
-      <div class="heart-row" style="margin-top:16px;">
-        <span style="--hp:2s;--hpl:0s;">💙</span><span style="--hp:1.8s;--hpl:.3s;">🩵</span><span style="--hp:2.2s;--hpl:.6s;">💙</span><span style="--hp:1.9s;--hpl:.15s;">🩵</span><span style="--hp:2s;--hpl:.45s;">💙</span>
+      <div class="carta-deco">✨</div>
+      <div class="carta-hi">Hola mi amor!! 💛</div>
+      <p class="carta-text">
+        Se que no te doy cartitas siempre, pero queria demostrarte lo mucho que te amo y no se me ocurrio otra forma que hacerlo a travez de lo que me gusta hacer 🩵
+      </p>
+      <div class="carta-pull">
+        Quiero que sepas que para mi eres excepcional, eres la mejor y siempre seras mi <strong>super reina titi preciosa</strong>.
       </div>
-      <div class="letter-sign">Con todo mi corazón, Deli<small>para siempre tu Deli ✦</small></div>
+      <p class="carta-text">
+        Me alegra mucho poder seguir aqui a tu lado y la verdad no quiero que esto pare nunca, quiero seguir <em>robandote el calor</em> y abrazarte junto a los bebes en la camita 🥹
+      </p>
+      <p class="carta-text">
+        Me encanta comer contigo, comer cositas ricas se siente mejor a tu lado 🍤✨
+      </p>
+      <div class="carta-pull">
+        Aunque no puedo darte todo, puedo darte mi <strong>corazoncito de pollo</strong> que no es mucho, pero es todo lo que tengo mi amor.
+      </div>
+      <p class="carta-text">
+        Te amo y siempre te amare, <em>hasta la ultima vez que respire te seguire amando.</em> 💙
+      </p>
+      <p class="carta-text" style="font-size:clamp(15px,2.2vw,19px);color:rgba(232,201,122,0.55);margin-top:8px;">
+        (y que sepas que esto no es un mensaje al azar creado por ia xd — realmente puse mi esfuerso en crear esto a la antiguita y solo use ia para aprender a hacer cosas que no sabia :p)
+      </p>
+      <div class="carta-sign">
+        Con todo mi corazoncito, Deli 💙
+        <small>para siempre tu Deli ✦</small>
+      </div>
     </div>
 
     <!-- GATITOS -->
@@ -326,13 +408,13 @@ body{
     <div class="heart-row reveal"><span style="--hp:2s;--hpl:0s;">🐾</span><span style="--hp:1.8s;--hpl:.2s;">💙</span><span style="--hp:2.1s;--hpl:.4s;">🐾</span><span style="--hp:1.9s;--hpl:.1s;">💙</span><span style="--hp:2s;--hpl:.3s;">🐾</span></div>
     <div class="cats-grid reveal">
       <div class="glass cat-card">
-        <img class="cat-photo" id="img-nero" src="" alt="Nero bebé">
+        <img class="cat-photo" id="img-nero" src="" alt="Nero">
         <div class="cat-name">Nero</div>
         <div class="cat-desc">El pequeño príncipe negro<br>con patitas blancas y ojos<br>azules como el cielo</div>
         <div class="cat-bday-msg">🐾 ¡Feliz cumple Kito! 💙</div>
       </div>
       <div class="glass cat-card">
-        <img class="cat-photo" id="img-kofun" src="" alt="Kofun dormido">
+        <img class="cat-photo" id="img-kofun" src="" alt="Kofun">
         <div class="cat-name">Kofun</div>
         <div class="cat-desc">El grandulón vaquito blanco<br>con su manchita negra<br>y cola traviesa</div>
         <div class="cat-bday-msg">🐾 ¡Te queremos mucho! 💙</div>
@@ -385,9 +467,10 @@ body{
     <!-- FINAL -->
     <div class="glass letter reveal" style="margin-bottom:40px;">
       <div class="gc tl"></div><div class="gc br"></div>
-      <div class="letter-hi">Para siempre,</div>
-      <p>Kito, eres la persona más especial de mi vida. Me gusta cómo ves el mundo, cómo lo dibujas, cómo lo cocinas y cómo lo construyes bloque a bloque. Gracias por dejarme estar en tu mundo — en el real y en el de los Sims.</p>
-      <p><strong>Con amor infinito — Deli 💙</strong></p>
+      <div class="letter-hi">En fin...</div>
+      <p style="font-size:clamp(16px,2.2vw,18px);line-height:2.05;color:rgba(200,230,255,.88);font-weight:300;margin-bottom:20px;">
+        <strong>Felices 19 añitos wawa</strong>, espero que te guste tu regalo.. 🥹
+      </p>
       <div class="heart-row" style="margin-top:20px;">
         <span style="--hp:2s;--hpl:0s;">💙</span><span style="--hp:1.7s;--hpl:.2s;">🩵</span><span style="--hp:2.3s;--hpl:.5s;">💙</span><span style="--hp:1.9s;--hpl:.3s;">🩵</span><span style="--hp:2.1s;--hpl:.1s;">💙</span><span style="--hp:1.8s;--hpl:.4s;">🩵</span><span style="--hp:2s;--hpl:.6s;">💙</span>
       </div>
@@ -399,6 +482,7 @@ body{
 
 <script>
 // ===== IMAGES =====
+// Rutas relativas a la carpeta imagenes/ — igual que el original
 const IMGS = {
   kito:   'imagenes/Captura de pantalla 2026-04-15 165333.png',
   nero:   'imagenes/WhatsApp Image 2026-04-15 at 5.27.52 PM.jpeg',
@@ -407,125 +491,190 @@ const IMGS = {
   giorno: 'imagenes/Captura de pantalla 2026-04-15 164931.png',
   postal: 'imagenes/Captura de pantalla 2026-04-15 164909.png',
   morde:  'imagenes/Captura de pantalla 2026-04-15 164857.png',
-  mono1:  'imagenes/Captura de pantalla 2026-04-15 164845.png',
-  mono2:  'imagenes/Captura de pantalla 2026-04-15 164845.png',
-  mono3:  'imagenes/Captura de pantalla 2026-04-15 164857.png',
-  mono4:  'imagenes/Captura de pantalla 2026-04-15 164931.png',
 };
 
-document.getElementById('img-kito').src   = IMGS.kito;
-document.getElementById('img-giorno').src  = IMGS.giorno;
-document.getElementById('img-postal').src  = IMGS.postal;
-document.getElementById('img-morde').src   = IMGS.morde;
-document.getElementById('img-nero').src    = IMGS.nero;
-document.getElementById('img-kofun').src   = IMGS.kofun;
-document.getElementById('img-gatas').src   = IMGS.gatas;
-
-// Sticker floats (monos de fondo)
-const stickerImgs = [IMGS.mono1, IMGS.mono2, IMGS.mono3, IMGS.mono4, IMGS.mono1, IMGS.mono3];
-for(let i=1;i<=6;i++){
-  document.getElementById('sf'+i+'img').src = stickerImgs[i-1];
+function setImg(id, src) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.src = src;
+  el.onerror = function() {
+    // Si no carga, mostrar un placeholder bonito con SVG inline
+    this.onerror = null;
+    const names = {
+      'img-kito': 'Kito', 'img-nero': 'Nero 🐾', 'img-kofun': 'Kofun 🐾',
+      'img-gatas': 'Gatitas 🐾', 'img-giorno': 'Giorno ⭐',
+      'img-postal': 'Postal Dude', 'img-morde': 'Mordekaiser'
+    };
+    const label = names[this.id] || '💙';
+    this.src = 'data:image/svg+xml,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" rx="100" fill="rgba(0,30,80,0.8)"/><text x="100" y="110" text-anchor="middle" font-size="14" fill="rgba(0,229,204,0.6)" font-family="serif">' + label + '</text></svg>'
+    );
+  };
 }
 
+setImg('img-kito',   IMGS.kito);
+setImg('img-giorno', IMGS.giorno);
+setImg('img-postal', IMGS.postal);
+setImg('img-morde',  IMGS.morde);
+setImg('img-nero',   IMGS.nero);
+setImg('img-kofun',  IMGS.kofun);
+setImg('img-gatas',  IMGS.gatas);
+
 // ===== CURSOR =====
-const cur=document.getElementById('cursor'), ring=document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY; cur.style.left=mx+'px';cur.style.top=my+'px'; });
-(function anim(){ rx+=(mx-rx)*.12;ry+=(my-ry)*.12; ring.style.left=rx+'px';ring.style.top=ry+'px'; requestAnimationFrame(anim); })();
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+});
+(function anim() {
+  rx += (mx - rx) * .12; ry += (my - ry) * .12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(anim);
+})();
 
 // ===== STARFIELD =====
-const sf=document.getElementById('starfield');
-for(let i=0;i<180;i++){
-  const s=document.createElement('div'); s.className='star2';
-  const z=Math.random()*2.2+.4;
-  s.style.cssText=`width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*5}s;--dl:${-Math.random()*7}s;--op:${Math.random()*.7+.3}`;
+const sf = document.getElementById('starfield');
+for (let i = 0; i < 180; i++) {
+  const s = document.createElement('div'); s.className = 'star2';
+  const z = Math.random() * 2.2 + .4;
+  s.style.cssText = `width:${z}px;height:${z}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*5}s;--dl:${-Math.random()*7}s;--op:${Math.random()*.7+.3}`;
   sf.appendChild(s);
 }
 
 // ===== INTRO PARTICLES =====
-const ip=document.getElementById('iparts');
-for(let i=0;i<60;i++){
-  const p=document.createElement('div'); p.className='ipart';
-  p.style.cssText=`left:${Math.random()*100}%;bottom:${Math.random()*30}%;--d:${5+Math.random()*10}s;--dl:${-Math.random()*12}s;--dx:${(Math.random()-.5)*60}px`;
+const ip = document.getElementById('iparts');
+for (let i = 0; i < 60; i++) {
+  const p = document.createElement('div'); p.className = 'ipart';
+  p.style.cssText = `left:${Math.random()*100}%;bottom:${Math.random()*30}%;--d:${5+Math.random()*10}s;--dl:${-Math.random()*12}s;--dx:${(Math.random()-.5)*60}px`;
   ip.appendChild(p);
 }
 
 // ===== FLOATING HEARTS =====
-const hc=document.getElementById('floating-hearts');
-const hsyms=['💙','🩵','💙','🩵','💙','💞'];
-for(let i=0;i<24;i++){
-  const h=document.createElement('div'); h.className='fheart';
-  const fs=10+Math.random()*18;
-  h.style.cssText=`left:${Math.random()*100}%;--fs:${fs}px;--hd:${9+Math.random()*13}s;--hdl:${-Math.random()*16}s;--hop:${.15+Math.random()*.3}`;
-  h.textContent=hsyms[i%hsyms.length];
+const hc = document.getElementById('floating-hearts');
+const hsyms = ['💙', '🩵', '💙', '🩵', '💙', '💞'];
+for (let i = 0; i < 24; i++) {
+  const h = document.createElement('div'); h.className = 'fheart';
+  const fs = 10 + Math.random() * 18;
+  h.style.cssText = `left:${Math.random()*100}%;--fs:${fs}px;--hd:${9+Math.random()*13}s;--hdl:${-Math.random()*16}s;--hop:${.15+Math.random()*.3}`;
+  h.textContent = hsyms[i % hsyms.length];
   hc.appendChild(h);
 }
 
-// ===== MUSIC =====
-let player=null, playing=false, ytReady=false;
+// ===== MUSIC - YouTube IFrame API correcto =====
+let ytPlayer = null;
+let musicPlaying = false;
+let ytReady = false;
+let autoplayPending = false;
 
-// Load YouTube IFrame API
-const tag=document.createElement('script');
-tag.src='https://www.youtube.com/iframe_api';
-document.head.appendChild(tag);
+// Cargar YouTube IFrame API
+const ytScript = document.createElement('script');
+ytScript.src = 'https://www.youtube.com/iframe_api';
+document.head.appendChild(ytScript);
 
-window.onYouTubeIframeAPIReady=function(){
-  ytReady=true;
-  player=new YT.Player('yt-player',{
-    height:'1', width:'1',
-    videoId:'P_kyCU0gwfA',
-    playerVars:{autoplay:0,loop:1,playlist:'P_kyCU0gwfA',controls:0,disablekb:1,fs:0,modestbranding:1,rel:0,showinfo:0,mute:0,volume:30},
-    events:{
-      onReady:function(e){
+window.onYouTubeIframeAPIReady = function() {
+  ytReady = true;
+  ytPlayer = new YT.Player('yt-iframe', {
+    height: '1',
+    width: '1',
+    videoId: 'P_kyCU0gwfA',
+    playerVars: {
+      autoplay: 0,
+      loop: 1,
+      playlist: 'P_kyCU0gwfA',
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      modestbranding: 1,
+      rel: 0,
+      mute: 0
+    },
+    events: {
+      onReady: function(e) {
         e.target.setVolume(35);
+        if (autoplayPending) {
+          e.target.playVideo();
+          musicPlaying = true;
+          document.getElementById('music-btn').textContent = '🔇';
+        }
       },
-      onStateChange:function(e){
-        if(e.data===YT.PlayerState.ENDED) player.playVideo();
+      onStateChange: function(e) {
+        if (e.data === YT.PlayerState.ENDED) {
+          ytPlayer.seekTo(0);
+          ytPlayer.playVideo();
+        }
       }
     }
   });
 };
 
-function startMusic(){
-  if(ytReady && player && player.playVideo){
-    player.setVolume(35);
-    player.playVideo();
-    playing=true;
-    document.getElementById('music-btn').textContent='🔇';
+function startMusic() {
+  if (ytReady && ytPlayer && ytPlayer.playVideo) {
+    try {
+      ytPlayer.setVolume(35);
+      ytPlayer.playVideo();
+      musicPlaying = true;
+      document.getElementById('music-btn').textContent = '🔇';
+    } catch(e) {
+      autoplayPending = true;
+    }
+  } else {
+    autoplayPending = true;
   }
 }
 
-function toggleMusic(){
-  const btn=document.getElementById('music-btn');
-  const lbl=document.getElementById('music-label');
-  if(!ytReady||!player){lbl.style.opacity='1';setTimeout(()=>lbl.style.opacity='0',2000);return;}
-  if(playing){
-    player.pauseVideo(); playing=false; btn.textContent='🎵';
-  }else{
-    player.setVolume(35); player.playVideo(); playing=true; btn.textContent='🔇';
+function toggleMusic() {
+  const btn = document.getElementById('music-btn');
+  const lbl = document.getElementById('music-label');
+  if (!ytReady || !ytPlayer) {
+    lbl.textContent = 'cargando música...';
+    lbl.style.opacity = '1';
+    autoplayPending = true;
+    setTimeout(() => lbl.style.opacity = '0', 2000);
+    return;
   }
-  lbl.style.opacity='1'; setTimeout(()=>lbl.style.opacity='0',2000);
+  if (musicPlaying) {
+    ytPlayer.pauseVideo();
+    musicPlaying = false;
+    btn.textContent = '🎵';
+    lbl.textContent = 'pausado';
+  } else {
+    ytPlayer.setVolume(35);
+    ytPlayer.playVideo();
+    musicPlaying = true;
+    btn.textContent = '🔇';
+    lbl.textContent = "Midna's Lament 🎵";
+  }
+  lbl.style.opacity = '1';
+  setTimeout(() => lbl.style.opacity = '0', 2000);
 }
 
 // ===== INTRO =====
-let introTimer=setTimeout(()=>skipIntro(),5500);
-function skipIntro(){
+let introTimer = setTimeout(() => skipIntro(), 5500);
+function skipIntro() {
   clearTimeout(introTimer);
-  document.getElementById('intro').classList.add('fadeout');
-  setTimeout(()=>{
-    document.getElementById('intro').style.display='none';
+  const intro = document.getElementById('intro');
+  intro.classList.add('fadeout');
+  setTimeout(() => {
+    intro.style.display = 'none';
     document.getElementById('main').classList.add('visible');
-    setTimeout(startMusic, 600);
-  },1400);
+    // Intentar música después de interacción del usuario
+    setTimeout(startMusic, 800);
+  }, 1400);
 }
 document.getElementById('iskip').addEventListener('click', skipIntro);
+// También skipear con cualquier toque/click en el intro
+document.getElementById('intro').addEventListener('click', skipIntro);
 
 // ===== SCROLL REVEAL =====
-const revEls=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
-},{threshold:.1});
-revEls.forEach(el=>obs.observe(el));
+const revEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, {threshold: .1});
+revEls.forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
